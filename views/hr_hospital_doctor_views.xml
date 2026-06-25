@@ -24,8 +24,8 @@
                             <field name="specialty" />
                         </group>
                         <group>
-                            <field name="phone" />
-                            <field name="mentor_id" />
+                            <field name="phone" widget="phone" />
+                            <field name="mentor_id" domain="[('id', '!=', id)]" />
                         </group>
                     </group>
                 </sheet>
