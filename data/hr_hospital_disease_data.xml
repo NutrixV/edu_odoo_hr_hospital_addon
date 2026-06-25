@@ -1,0 +1,18 @@
+<odoo noupdate="1">
+    <record id="hr_hospital_disease_flu" model="hr.hospital.disease">
+        <field name="name">Грип</field>
+        <field name="description">Гостра респіраторна вірусна інфекція.</field>
+    </record>
+
+    <record id="hr_hospital_disease_hypertension" model="hr.hospital.disease">
+        <field name="name">Гіпертонія</field>
+        <field name="description">Стійке підвищення артеріального тиску.</field>
+    </record>
+
+    <record id="hr_hospital_disease_diabetes" model="hr.hospital.disease">
+        <field name="name">Цукровий діабет</field>
+        <field
+            name="description"
+        >Порушення обміну речовин із підвищеним рівнем глюкози.</field>
+    </record>
+</odoo>

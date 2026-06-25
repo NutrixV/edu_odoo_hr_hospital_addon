@@ -1,0 +1,25 @@
+<odoo>
+    <record id="hr_hospital_patient_demo_1" model="hr.hospital.patient">
+        <field name="name">Андрій Бондаренко</field>
+        <field name="birthdate">1990-04-15</field>
+        <field name="gender">male</field>
+        <field name="phone">+380671112233</field>
+        <field name="doctor_id" ref="hr_hospital_doctor_demo_1" />
+    </record>
+
+    <record id="hr_hospital_patient_demo_2" model="hr.hospital.patient">
+        <field name="name">Світлана Мельник</field>
+        <field name="birthdate">1985-09-30</field>
+        <field name="gender">female</field>
+        <field name="phone">+380672223344</field>
+        <field name="doctor_id" ref="hr_hospital_doctor_demo_2" />
+    </record>
+
+    <record id="hr_hospital_patient_demo_3" model="hr.hospital.patient">
+        <field name="name">Олександр Ткаченко</field>
+        <field name="birthdate">2000-12-05</field>
+        <field name="gender">male</field>
+        <field name="phone">+380673334455</field>
+        <field name="doctor_id" ref="hr_hospital_doctor_demo_3" />
+    </record>
+</odoo>
