@@ -1,0 +1,152 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hr_hospital
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 "
+"? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > "
+"14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 "
+">=11 && n % 100 <=14 )) ? 2: 3);\n"
+
+#. module: hr_hospital
+#: model:ir.model,name:hr_hospital.model_hr_hospital_disease
+#: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_visit__disease_id
+msgid "Disease"
+msgstr "Захворювання"
+
+#. module: hr_hospital
+#: model:ir.model,name:hr_hospital.model_hr_hospital_doctor
+#: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_visit__doctor_id
+msgid "Doctor"
+msgstr "Лікар"
+
+#. module: hr_hospital
+#: model:ir.model,name:hr_hospital.model_hr_hospital_patient
+#: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_visit__patient_id
+msgid "Patient"
+msgstr "Пацієнт"
+
+#. module: hr_hospital
+#: model:ir.model,name:hr_hospital.model_hr_hospital_visit
+msgid "Patient Visit"
+msgstr "Візит пацієнта"
+
+#. module: hr_hospital
+#: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_disease__name
+msgid "Name"
+msgstr "Назва"
+
+#. module: hr_hospital
+#: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_doctor__name
+#: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_patient__name
+msgid "Full Name"
+msgstr "Повне ім'я"
+
+#. module: hr_hospital
+#: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_disease__description
+msgid "Description"
+msgstr "Опис"
+
+#. module: hr_hospital
+#: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_disease__parent_id
+msgid "Parent Disease"
+msgstr "Батьківське захворювання"
+
+#. module: hr_hospital
+#: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_doctor__specialty
+msgid "Specialty"
+msgstr "Спеціальність"
+
+#. module: hr_hospital
+#: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_doctor__phone
+#: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_patient__phone
+msgid "Phone"
+msgstr "Телефон"
+
+#. module: hr_hospital
+#: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_doctor__mentor_id
+msgid "Supervising Doctor"
+msgstr "Лікар, що спостерігає"
+
+#. module: hr_hospital
+#: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_patient__birthdate
+msgid "Date of Birth"
+msgstr "Дата народження"
+
+#. module: hr_hospital
+#: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_patient__gender
+msgid "Gender"
+msgstr "Стать"
+
+#. module: hr_hospital
+#: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_patient__doctor_id
+msgid "Personal Doctor"
+msgstr "Особистий лікар"
+
+#. module: hr_hospital
+#: model:ir.model.fields.selection,name:hr_hospital.selection__hr_hospital_patient__gender__male
+msgid "Male"
+msgstr "Чоловіча"
+
+#. module: hr_hospital
+#: model:ir.model.fields.selection,name:hr_hospital.selection__hr_hospital_patient__gender__female
+msgid "Female"
+msgstr "Жіноча"
+
+#. module: hr_hospital
+#: model:ir.model.fields.selection,name:hr_hospital.selection__hr_hospital_patient__gender__other
+msgid "Other"
+msgstr "Інша"
+
+#. module: hr_hospital
+#: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_visit__name
+msgid "Reference"
+msgstr "Номер"
+
+#. module: hr_hospital
+#: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_visit__visit_date
+msgid "Visit Date"
+msgstr "Дата візиту"
+
+#. module: hr_hospital
+#: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_visit__note
+msgid "Note"
+msgstr "Примітка"
+
+#. module: hr_hospital
+#: model:ir.ui.menu,name:hr_hospital.hr_hospital_main_menu
+msgid "Hospital"
+msgstr "Лікарня"
+
+#. module: hr_hospital
+#: model:ir.actions.act_window,name:hr_hospital.action_hr_hospital_doctor_window
+#: model:ir.ui.menu,name:hr_hospital.hr_hospital_menu_doctor
+msgid "Doctors"
+msgstr "Лікарі"
+
+#. module: hr_hospital
+#: model:ir.actions.act_window,name:hr_hospital.action_hr_hospital_patient_window
+#: model:ir.ui.menu,name:hr_hospital.hr_hospital_menu_patient
+msgid "Patients"
+msgstr "Пацієнти"
+
+#. module: hr_hospital
+#: model:ir.actions.act_window,name:hr_hospital.action_hr_hospital_disease_window
+#: model:ir.ui.menu,name:hr_hospital.hr_hospital_menu_disease
+msgid "Diseases"
+msgstr "Захворювання"
+
+#. module: hr_hospital
+#: model:ir.actions.act_window,name:hr_hospital.action_hr_hospital_visit_window
+#: model:ir.ui.menu,name:hr_hospital.hr_hospital_menu_visit
+msgid "Visits"
+msgstr "Візити"
