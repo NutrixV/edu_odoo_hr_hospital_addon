@@ -1,6 +1,6 @@
 <odoo>
-    <record id="hr_hospital_visit_tree" model="ir.ui.view">
-        <field name="name">hr.hospital.visit.tree</field>
+    <record id="hr_hospital_visit_list" model="ir.ui.view">
+        <field name="name">hr.hospital.visit.list</field>
         <field name="model">hr.hospital.visit</field>
         <field name="arch" type="xml">
             <list>

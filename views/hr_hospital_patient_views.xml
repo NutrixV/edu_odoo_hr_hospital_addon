@@ -1,6 +1,6 @@
 <odoo>
-    <record id="hr_hospital_patient_tree" model="ir.ui.view">
-        <field name="name">hr.hospital.patient.tree</field>
+    <record id="hr_hospital_patient_list" model="ir.ui.view">
+        <field name="name">hr.hospital.patient.list</field>
         <field name="model">hr.hospital.patient</field>
         <field name="arch" type="xml">
             <list>
@@ -35,10 +35,7 @@
         </field>
     </record>
 
-    <record
-        id="action_hr_hospital_patient_window"
-        model="ir.actions.act_window"
-    >
+    <record id="action_hr_hospital_patient_window" model="ir.actions.act_window">
         <field name="name">Patients</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hr.hospital.patient</field>

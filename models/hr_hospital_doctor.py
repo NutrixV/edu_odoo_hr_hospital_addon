@@ -1,9 +1,5 @@
-import logging
-
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
-
-_logger = logging.getLogger(__name__)
 
 
 class HrHospitalDoctor(models.Model):
@@ -13,11 +9,12 @@ class HrHospitalDoctor(models.Model):
 
     name = fields.Char(string='Full Name', required=True)
     active = fields.Boolean(default=True)
-    specialty = fields.Char(string='Specialty')
-    phone = fields.Char(string='Phone')
+    specialty = fields.Char()
+    phone = fields.Char()
     mentor_id = fields.Many2one(
         comodel_name='hr.hospital.doctor',
         string='Supervising Doctor',
+        domain="[('id', '!=', id)]",
     )
 
     @api.constrains('mentor_id')
