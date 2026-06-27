@@ -53,8 +53,7 @@ cover/
 
 # Translations
 *.mo
-# In Odoo modules the .pot template is a tracked translation source, not a build artifact
-!i18n/*.pot
+*.pot
 
 # Django stuff:
 *.log
