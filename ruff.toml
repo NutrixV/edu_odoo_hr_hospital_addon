@@ -1,0 +1,60 @@
+# ruff.toml — Odoo 19 unified code style
+
+target-version = "py310"
+line-length = 120
+
+exclude = [
+    '.bzr', '.direnv', '.eggs', '.git', '.git-rewrite', '.hg',
+    '.ipynb_checkpoints', '.mypy_cache', '.nox', '.pants.d', '.pyenv',
+    '.pytest_cache', '.pytype', '.ruff_cache', '.svn', '.tox', '.venv',
+    '.vscode', '__pypackages__', '_build', 'buck-out', 'build', 'dist',
+    'node_modules', 'site-packages', 'venv',
+]
+
+extend-exclude = [
+    "**/migrations/**",
+    "**/static/lib/**",
+    "**/static/**/lib/**",
+    "**/node_modules/**",
+    "**/__manifest__.py",
+]
+
+[lint]
+preview = true
+external = ["OLS"]
+
+select = [
+    "BLE", "C", "COM", "E", "EM", "EXE", "F", "FA", "FLY", "G", "I", "ICN",
+    "INT", "ISC", "LOG", "PGH", "PIE", "PLC", "PLE", "PLW", "PYI", "RET",
+    "RUF", "S", "SIM", "SLOT", "T", "TC", "TID", "TRY", "UP", "W", "YTT",
+]
+
+ignore = [
+    "C408", "C420", "C901", "E266", "E301", "E302", "E501", "E713", "EM102",
+    "FA100", "PGH003", "PIE790", "PIE808", "PLC2701", "PLW2901", "RUF001",
+    "RUF005", "RUF012", "RUF067", "RUF100", "SIM102", "SIM108", "SIM117",
+    "TID252", "TRY003", "TRY300", "TRY301", "TRY400", "UP031",
+    "COM812", "ISC001",
+    "EM101", "G201", "S101", "SLF001",
+    "UP006", "UP007", "UP035",
+]
+
+[lint.per-file-ignores]
+"**/__init__.py" = ["F401", "EXE002", "I001"]
+"**/models/*.py" = ["BLE001", "EXE002", "PLC0415"]
+"**/wizard/*.py" = ["BLE001", "PLC0415"]
+"**/tests/**/*.py" = [
+    "S101", "S105", "S106", "S110", "T201", "PLR2004", "F841", "BLE001",
+    "EM101", "PLC0415", "SIM105",
+]
+
+[lint.isort]
+section-order = ["future", "standard-library", "third-party", "first-party", "local-folder"]
+known-first-party = ["odoo"]
+known-local-folder = ["odoo.addons"]
+known-third-party = ["lxml", "psycopg2", "werkzeug", "dateutil"]
+
+[format]
+quote-style = "single"
+indent-style = "space"
+docstring-code-format = true
