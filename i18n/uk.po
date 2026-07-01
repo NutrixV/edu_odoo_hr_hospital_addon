@@ -128,25 +128,25 @@ msgid "Hospital"
 msgstr "Лікарня"
 
 #. module: hr_hospital
-#: model:ir.actions.act_window,name:hr_hospital.action_hr_hospital_doctor_window
+#: model:ir.actions.act_window,name:hr_hospital.hr_hospital_doctor_action
 #: model:ir.ui.menu,name:hr_hospital.hr_hospital_menu_doctor
 msgid "Doctors"
 msgstr "Лікарі"
 
 #. module: hr_hospital
-#: model:ir.actions.act_window,name:hr_hospital.action_hr_hospital_patient_window
+#: model:ir.actions.act_window,name:hr_hospital.hr_hospital_patient_action
 #: model:ir.ui.menu,name:hr_hospital.hr_hospital_menu_patient
 msgid "Patients"
 msgstr "Пацієнти"
 
 #. module: hr_hospital
-#: model:ir.actions.act_window,name:hr_hospital.action_hr_hospital_disease_window
+#: model:ir.actions.act_window,name:hr_hospital.hr_hospital_disease_action
 #: model:ir.ui.menu,name:hr_hospital.hr_hospital_menu_disease
 msgid "Diseases"
 msgstr "Захворювання"
 
 #. module: hr_hospital
-#: model:ir.actions.act_window,name:hr_hospital.action_hr_hospital_visit_window
+#: model:ir.actions.act_window,name:hr_hospital.hr_hospital_visit_action
 #: model:ir.ui.menu,name:hr_hospital.hr_hospital_menu_visit
 msgid "Visits"
 msgstr "Візити"
