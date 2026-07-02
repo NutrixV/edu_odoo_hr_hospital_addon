@@ -6,6 +6,8 @@
             <list>
                 <field name="name" />
                 <field name="specialty" />
+                <field name="category_id" />
+                <field name="is_intern" />
                 <field name="phone" />
                 <field name="mentor_id" />
             </list>
@@ -22,10 +24,20 @@
                         <group>
                             <field name="name" />
                             <field name="specialty" />
+                            <field name="category_id" />
+                            <field name="is_intern" />
+                            <field name="mentor_id" invisible="not is_intern" />
                         </group>
                         <group>
                             <field name="phone" widget="phone" />
-                            <field name="mentor_id" />
+                            <field name="user_id" />
+                        </group>
+                        <group string="Medical Info">
+                            <field name="birthdate" />
+                            <field name="age" />
+                            <field name="gender" />
+                            <field name="blood_group" />
+                            <field name="rh_factor" />
                         </group>
                     </group>
                 </sheet>
