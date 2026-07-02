@@ -20,6 +20,25 @@
         <field name="arch" type="xml">
             <form>
                 <header>
+                    <button
+                        name="action_mark_done"
+                        type="object"
+                        string="Mark as Done"
+                        class="btn-primary"
+                        invisible="state != 'planned'"
+                    />
+                    <button
+                        name="action_cancel"
+                        type="object"
+                        string="Cancel Visit"
+                        invisible="state != 'planned'"
+                    />
+                    <button
+                        name="action_reset_to_planned"
+                        type="object"
+                        string="Reset to Planned"
+                        invisible="state != 'cancelled'"
+                    />
                     <field name="state" widget="statusbar" statusbar_visible="planned,done" />
                 </header>
                 <sheet>

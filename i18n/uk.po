@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-02 09:48+0000\n"
-"PO-Revision-Date: 2026-07-02 09:48+0000\n"
+"POT-Creation-Date: 2026-07-02 12:44+0000\n"
+"PO-Revision-Date: 2026-07-02 12:44+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: uk\n"
@@ -107,6 +107,11 @@ msgstr "Група крові"
 #: model_terms:ir.ui.view,arch_db:hr_hospital.hr_hospital_visit_report_form
 msgid "Cancel"
 msgstr "Скасувати"
+
+#. module: hr_hospital
+#: model_terms:ir.ui.view,arch_db:hr_hospital.hr_hospital_visit_form
+msgid "Cancel Visit"
+msgstr "Скасувати візит"
 
 #. module: hr_hospital
 #: model:ir.model.fields.selection,name:hr_hospital.selection__hr_hospital_visit__state__cancelled
@@ -320,6 +325,11 @@ msgid "Male"
 msgstr "Чоловіча"
 
 #. module: hr_hospital
+#: model_terms:ir.ui.view,arch_db:hr_hospital.hr_hospital_visit_form
+msgid "Mark as Done"
+msgstr "Позначити завершеним"
+
+#. module: hr_hospital
 #: model:ir.model,name:hr_hospital.model_hr_hospital_patient_reassign_doctor
 msgid "Mass Reassign Personal Doctor"
 msgstr "Масове перепризначення персонального лікаря"
@@ -377,6 +387,24 @@ msgstr "Дата та час візиту"
 #: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_visit_report__only_done
 msgid "Only Completed Visits"
 msgstr "Лише завершені візити"
+
+#. module: hr_hospital
+#. odoo-python
+#: code:addons/hr_hospital/models/hr_hospital_visit.py:0
+msgid "Only a cancelled visit can be reset to planned."
+msgstr "Лише скасований візит можна повернути в заплановані."
+
+#. module: hr_hospital
+#. odoo-python
+#: code:addons/hr_hospital/models/hr_hospital_visit.py:0
+msgid "Only a planned visit can be cancelled."
+msgstr "Лише запланований візит можна скасувати."
+
+#. module: hr_hospital
+#. odoo-python
+#: code:addons/hr_hospital/models/hr_hospital_visit.py:0
+msgid "Only a planned visit can be marked as done."
+msgstr "Лише запланований візит можна позначити завершеним."
 
 #. module: hr_hospital
 #: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_disease__parent_id
@@ -442,6 +470,11 @@ msgstr "Перепризначити персонального лікаря"
 #: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_visit__name
 msgid "Reference"
 msgstr "Номер"
+
+#. module: hr_hospital
+#: model_terms:ir.ui.view,arch_db:hr_hospital.hr_hospital_visit_form
+msgid "Reset to Planned"
+msgstr "Повернути в заплановані"
 
 #. module: hr_hospital
 #: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_doctor__rh_factor

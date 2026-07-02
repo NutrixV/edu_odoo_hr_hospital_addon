@@ -59,6 +59,30 @@ class HrHospitalVisit(models.Model):
         self.ensure_one()
         return self.state == 'done'
 
+    def action_mark_done(self):
+        for visit in self:
+            if visit.state != 'planned':
+                raise UserError(_('Only a planned visit can be marked as done.'))
+            vals = {'state': 'done'}
+            if not visit.actual_date:
+                vals['actual_date'] = fields.Datetime.now()
+            visit.write(vals)
+        return True
+
+    def action_cancel(self):
+        for visit in self:
+            if visit.state != 'planned':
+                raise UserError(_('Only a planned visit can be cancelled.'))
+            visit.write({'state': 'cancelled'})
+        return True
+
+    def action_reset_to_planned(self):
+        for visit in self:
+            if visit.state != 'cancelled':
+                raise UserError(_('Only a cancelled visit can be reset to planned.'))
+            visit.write({'state': 'planned'})
+        return True
+
     def write(self, vals):
         protected = {'scheduled_date', 'actual_date', 'doctor_id'}
         if protected & set(vals):
