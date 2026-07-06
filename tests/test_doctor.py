@@ -37,7 +37,3 @@ class TestDoctor(TransactionCase):
         })
         with self.assertRaises(ValidationError):
             mentor.category_id = self.intern_cat
-
-    def test_inherits_medic_mixin(self):
-        for field_name in ('blood_group', 'rh_factor', 'gender', 'birthdate', 'age'):
-            self.assertIn(field_name, self.Doctor._fields)

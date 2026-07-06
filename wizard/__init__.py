@@ -1,4 +1,2 @@
-from . import (
-    hr_hospital_patient_reassign_doctor,
-    hr_hospital_visit_report,
-)
+from . import hr_hospital_patient_reassign_doctor
+from . import hr_hospital_visit_report

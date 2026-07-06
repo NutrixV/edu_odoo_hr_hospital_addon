@@ -17,19 +17,21 @@ class HrHospitalPatientReassignDoctor(models.TransientModel):
         history_model = self.env['hr.hospital.doctor.history']
         patients = self.env['hr.hospital.patient'].browse(
             self.env.context.get('active_ids', []),
-        )
-        for patient in patients:
-            if patient.doctor_id == self.doctor_id:
-                continue
-            open_lines = history_model.search([
-                ('patient_id', '=', patient.id),
-                ('change_date', '=', False),
-            ])
-            open_lines.change_date = self.change_date
-            history_model.create({
+        ).filtered(lambda patient: patient.doctor_id != self.doctor_id)
+        if not patients:
+            return {'type': 'ir.actions.act_window_close'}
+        open_lines = history_model.search([
+            ('patient_id', 'in', patients.ids),
+            ('change_date', '=', False),
+        ])
+        open_lines.write({'change_date': self.change_date})
+        history_model.create([
+            {
                 'patient_id': patient.id,
                 'doctor_id': self.doctor_id.id,
                 'assign_date': self.change_date,
-            })
-            patient.doctor_id = self.doctor_id
+            }
+            for patient in patients
+        ])
+        patients.write({'doctor_id': self.doctor_id.id})
         return {'type': 'ir.actions.act_window_close'}

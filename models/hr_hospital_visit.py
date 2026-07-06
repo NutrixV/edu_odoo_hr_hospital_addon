@@ -60,27 +60,26 @@ class HrHospitalVisit(models.Model):
         return self.state == 'done'
 
     def action_mark_done(self):
-        for visit in self:
-            if visit.state != 'planned':
-                raise UserError(_('Only a planned visit can be marked as done.'))
-            vals = {'state': 'done'}
-            if not visit.actual_date:
-                vals['actual_date'] = fields.Datetime.now()
-            visit.write(vals)
+        if any(visit.state != 'planned' for visit in self):
+            raise UserError(_('Only a planned visit can be marked as done.'))
+        without_date = self.filtered(lambda visit: not visit.actual_date)
+        without_date.write({
+            'state': 'done',
+            'actual_date': fields.Datetime.now(),
+        })
+        (self - without_date).write({'state': 'done'})
         return True
 
     def action_cancel(self):
-        for visit in self:
-            if visit.state != 'planned':
-                raise UserError(_('Only a planned visit can be cancelled.'))
-            visit.write({'state': 'cancelled'})
+        if any(visit.state != 'planned' for visit in self):
+            raise UserError(_('Only a planned visit can be cancelled.'))
+        self.write({'state': 'cancelled'})
         return True
 
     def action_reset_to_planned(self):
-        for visit in self:
-            if visit.state != 'cancelled':
-                raise UserError(_('Only a cancelled visit can be reset to planned.'))
-            visit.write({'state': 'planned'})
+        if any(visit.state != 'cancelled' for visit in self):
+            raise UserError(_('Only a cancelled visit can be reset to planned.'))
+        self.write({'state': 'planned'})
         return True
 
     def write(self, vals):
