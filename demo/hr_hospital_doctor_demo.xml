@@ -3,19 +3,44 @@
         <field name="name">Олена Петренко</field>
         <field name="specialty">Терапевт</field>
         <field name="phone">+380501112233</field>
+        <field name="category_id" ref="hr_hospital_category_expert" />
+        <field name="gender">female</field>
+        <field name="birthdate">1975-03-12</field>
+        <field name="blood_group">a</field>
+        <field name="rh_factor">plus</field>
     </record>
 
     <record id="hr_hospital_doctor_demo_2" model="hr.hospital.doctor">
         <field name="name">Ігор Коваленко</field>
         <field name="specialty">Кардіолог</field>
         <field name="phone">+380502223344</field>
-        <field name="mentor_id" ref="hr_hospital_doctor_demo_1" />
+        <field name="category_id" ref="hr_hospital_category_specialist" />
+        <field name="gender">male</field>
+        <field name="birthdate">1982-07-24</field>
+        <field name="blood_group">o</field>
+        <field name="rh_factor">minus</field>
     </record>
 
     <record id="hr_hospital_doctor_demo_3" model="hr.hospital.doctor">
         <field name="name">Марія Шевченко</field>
         <field name="specialty">Ендокринолог</field>
         <field name="phone">+380503334455</field>
-        <field name="mentor_id" ref="hr_hospital_doctor_demo_1" />
+        <field name="category_id" ref="hr_hospital_category_specialist" />
+        <field name="gender">female</field>
+        <field name="birthdate">1988-11-02</field>
+        <field name="blood_group">b</field>
+        <field name="rh_factor">plus</field>
+    </record>
+
+    <record id="hr_hospital_doctor_demo_4" model="hr.hospital.doctor">
+        <field name="name">Тарас Лисенко</field>
+        <field name="specialty">Терапевт</field>
+        <field name="phone">+380504445566</field>
+        <field name="mentor_id" ref="hr_hospital_doctor_demo_2" />
+        <field name="category_id" ref="hr_hospital_category_intern" />
+        <field name="gender">male</field>
+        <field name="birthdate">1999-05-18</field>
+        <field name="blood_group">ab</field>
+        <field name="rh_factor">minus</field>
     </record>
 </odoo>

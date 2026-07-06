@@ -1,8 +1,20 @@
 <odoo>
     <menuitem id="hr_hospital_main_menu" name="Hospital" sequence="300">
-        <menuitem id="hr_hospital_menu_doctor" action="hr_hospital_doctor_action" name="Doctors" sequence="10" />
-        <menuitem id="hr_hospital_menu_patient" action="hr_hospital_patient_action" name="Patients" sequence="20" />
-        <menuitem id="hr_hospital_menu_disease" action="hr_hospital_disease_action" name="Diseases" sequence="30" />
-        <menuitem id="hr_hospital_menu_visit" action="hr_hospital_visit_action" name="Visits" sequence="40" />
+        <menuitem
+            id="hr_hospital_menu_category"
+            action="hr_hospital_doctor_category_action"
+            name="Doctor Categories"
+            sequence="10"
+        />
+        <menuitem id="hr_hospital_menu_doctor" action="hr_hospital_doctor_action" name="Doctors" sequence="20" />
+        <menuitem id="hr_hospital_menu_patient" action="hr_hospital_patient_action" name="Patients" sequence="30" />
+        <menuitem id="hr_hospital_menu_disease" action="hr_hospital_disease_action" name="Diseases" sequence="40" />
+        <menuitem id="hr_hospital_menu_visit" action="hr_hospital_visit_action" name="Visits" sequence="50" />
+        <menuitem
+            id="hr_hospital_menu_doctor_history"
+            action="hr_hospital_doctor_history_action"
+            name="Doctor History"
+            sequence="60"
+        />
     </menuitem>
 </odoo>

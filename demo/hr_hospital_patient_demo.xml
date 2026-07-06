@@ -1,5 +1,8 @@
 <odoo>
     <record id="hr_hospital_patient_demo_1" model="hr.hospital.patient">
+        <field name="insurance_number">UA-INS-0000000001</field>
+        <field name="blood_group">o</field>
+        <field name="rh_factor">plus</field>
         <field name="name">Андрій Бондаренко</field>
         <field name="birthdate">1990-04-15</field>
         <field name="gender">male</field>
@@ -8,6 +11,9 @@
     </record>
 
     <record id="hr_hospital_patient_demo_2" model="hr.hospital.patient">
+        <field name="insurance_number">UA-INS-0000000002</field>
+        <field name="blood_group">a</field>
+        <field name="rh_factor">minus</field>
         <field name="name">Світлана Мельник</field>
         <field name="birthdate">1985-09-30</field>
         <field name="gender">female</field>
@@ -16,6 +22,9 @@
     </record>
 
     <record id="hr_hospital_patient_demo_3" model="hr.hospital.patient">
+        <field name="insurance_number">UA-INS-0000000003</field>
+        <field name="blood_group">ab</field>
+        <field name="rh_factor">plus</field>
         <field name="name">Олександр Ткаченко</field>
         <field name="birthdate">2000-12-05</field>
         <field name="gender">male</field>
