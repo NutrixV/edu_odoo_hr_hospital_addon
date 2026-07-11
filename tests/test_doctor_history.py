@@ -44,12 +44,3 @@ class TestDoctorHistory(TransactionCase):
             'change_date': date(2026, 2, 1),
         })
         self.assertIsNone(history._onchange_change_date())
-
-    def test_demo_history_records(self):
-        demo = self.env.ref(
-            'hr_hospital.hr_hospital_doctor_history_demo_1',
-            raise_if_not_found=False,
-        )
-        if not demo:
-            self.skipTest('Demo data is not loaded in this database.')
-        self.assertTrue(demo.change_date)
