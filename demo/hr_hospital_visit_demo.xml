@@ -1,5 +1,4 @@
 <odoo noupdate="1">
-    <!-- noupdate: done-візити захищені write-guard'ом, повторний -u не повинен їх переписувати -->
     <record id="hr_hospital_visit_demo_1" model="hr.hospital.visit">
         <field name="patient_id" ref="hr_hospital_patient_demo_1" />
         <field name="doctor_id" ref="hr_hospital_doctor_demo_1" />
