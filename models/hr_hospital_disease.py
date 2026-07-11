@@ -21,6 +21,11 @@ class HrHospitalDisease(models.Model):
         recursive=True,
         store=True,
     )
+    visit_ids = fields.One2many(
+        comodel_name='hr.hospital.visit',
+        inverse_name='disease_id',
+        string='Visits',
+    )
 
     @api.depends('name', 'parent_id.complete_name')
     def _compute_complete_name(self):

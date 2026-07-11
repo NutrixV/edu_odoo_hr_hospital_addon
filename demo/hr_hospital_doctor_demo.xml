@@ -43,4 +43,28 @@
         <field name="blood_group">ab</field>
         <field name="rh_factor">minus</field>
     </record>
+
+    <record id="hr_hospital_doctor_demo_5" model="hr.hospital.doctor">
+        <field name="name">Остап Вишня</field>
+        <field name="specialty">Терапевт</field>
+        <field name="phone">+380505556677</field>
+        <field name="category_id" ref="hr_hospital_category_intern" />
+        <field name="mentor_id" ref="hr_hospital_doctor_demo_1" />
+        <field name="gender">male</field>
+        <field name="birthdate">2000-04-09</field>
+        <field name="blood_group">o</field>
+        <field name="rh_factor">plus</field>
+    </record>
+
+    <record id="hr_hospital_doctor_demo_6" model="hr.hospital.doctor">
+        <field name="name">Леся Зоряна</field>
+        <field name="specialty">Педіатр</field>
+        <field name="phone">+380506667788</field>
+        <field name="category_id" ref="hr_hospital_category_intern" />
+        <field name="mentor_id" ref="hr_hospital_doctor_demo_3" />
+        <field name="gender">female</field>
+        <field name="birthdate">2001-12-21</field>
+        <field name="blood_group">a</field>
+        <field name="rh_factor">minus</field>
+    </record>
 </odoo>

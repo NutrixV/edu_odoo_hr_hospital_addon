@@ -42,6 +42,37 @@ class HrHospitalVisit(models.Model):
     summary = fields.Html(string='Summary / Epicrisis')
     note = fields.Text()
 
+    same_disease_visit_count = fields.Integer(
+        string='Same Disease Visits',
+        compute='_compute_same_disease_visit_count',
+    )
+
+    @api.depends('disease_id.visit_ids')
+    def _compute_same_disease_visit_count(self):
+        for visit in self:
+            visit.same_disease_visit_count = len(visit.disease_id.visit_ids)
+
+    @api.model
+    def _get_quick_visit_action(self, defaults):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('New Visit'),
+            'res_model': 'hr.hospital.visit',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': defaults,
+        }
+
+    def action_view_same_disease_visits(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Visits: %s') % self.disease_id.display_name,
+            'res_model': 'hr.hospital.visit',
+            'view_mode': 'list,form',
+            'domain': [('disease_id', '=', self.disease_id.id)],
+        }
+
     @api.depends('patient_id', 'scheduled_date')
     def _compute_name(self):
         for visit in self:

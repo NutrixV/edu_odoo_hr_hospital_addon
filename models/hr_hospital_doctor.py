@@ -30,6 +30,11 @@ class HrHospitalDoctor(models.Model):
         string='Mentor',
         domain="[('id', '!=', id), ('is_intern', '=', False)]",
     )
+    intern_ids = fields.One2many(
+        comodel_name='hr.hospital.doctor',
+        inverse_name='mentor_id',
+        string='Interns',
+    )
 
     @api.depends('category_id')
     def _compute_is_intern(self):
@@ -45,7 +50,13 @@ class HrHospitalDoctor(models.Model):
         for doctor in self:
             if doctor.mentor_id and doctor.mentor_id.is_intern:
                 raise ValidationError(_('An intern cannot be selected as a mentor.'))
-            if doctor.is_intern and self.search_count([('mentor_id', '=', doctor.id)]):
+            if doctor.is_intern and doctor.intern_ids:
                 raise ValidationError(_('A doctor who mentors interns cannot become an intern.'))
         if self._has_cycle('mentor_id'):
             raise ValidationError(_('A doctor cannot be their own supervisor (recursive chain).'))
+
+    def action_create_quick_visit(self):
+        self.ensure_one()
+        return self.env['hr.hospital.visit']._get_quick_visit_action({
+            'default_doctor_id': self.id,
+        })

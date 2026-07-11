@@ -89,3 +89,22 @@ class TestVisit(TransactionCase):
     def test_cannot_reset_done_visit(self):
         with self.assertRaises(UserError):
             self.visit.action_reset_to_planned()
+
+    def test_same_disease_count_and_action(self):
+        disease = self.env['hr.hospital.disease'].create({'name': 'Test Disease'})
+        self.env['hr.hospital.visit'].create([
+            {
+                'patient_id': self.patient.id,
+                'doctor_id': self.doctor.id,
+                'disease_id': disease.id,
+            }
+            for _dummy in range(2)
+        ])
+        visit = self.env['hr.hospital.visit'].create({
+            'patient_id': self.patient.id,
+            'doctor_id': self.doctor.id,
+            'disease_id': disease.id,
+        })
+        self.assertEqual(visit.same_disease_visit_count, 3)
+        action = visit.action_view_same_disease_visits()
+        self.assertEqual(action['domain'], [('disease_id', '=', disease.id)])

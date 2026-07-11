@@ -1,0 +1,58 @@
+<odoo>
+    <record id="hr_hospital_disease_report_pdf" model="ir.actions.report">
+        <field name="name">Disease Report (PDF)</field>
+        <field name="model">hr.hospital.disease.report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hr_hospital.report_disease_visits</field>
+        <field name="report_file">hr_hospital.report_disease_visits</field>
+        <field name="print_report_name">'Disease Report'</field>
+    </record>
+
+    <template id="report_disease_visits">
+        <t t-call="web.html_container">
+            <t t-foreach="reports" t-as="report">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Disease Report</h2>
+                        <p>
+                            <t t-if="report['wizard'].date_from">
+                                <strong>From:</strong>
+                                <span t-field="report['wizard'].date_from" />
+                            </t>
+                            <t t-if="report['wizard'].date_to">
+                                <strong>To:</strong>
+                                <span t-field="report['wizard'].date_to" />
+                            </t>
+                        </p>
+                        <p t-if="not report['disease_groups']">No visits found for the selected criteria.</p>
+                        <t t-foreach="report['disease_groups']" t-as="group">
+                            <h4>
+                                <t t-if="group['disease']" t-out="group['disease'].complete_name" />
+                                <t t-else="">No Disease</t>
+                                (<t t-out="len(group['visits'])" />)
+                            </h4>
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Scheduled</th>
+                                        <th>Patient</th>
+                                        <th>Doctor</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="group['visits']" t-as="visit">
+                                        <td><span t-field="visit.scheduled_date" /></td>
+                                        <td><span t-field="visit.patient_id" /></td>
+                                        <td><span t-field="visit.doctor_id" /></td>
+                                        <td><span t-field="visit.state" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

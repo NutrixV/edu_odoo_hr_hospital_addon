@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import _, api, fields, models
 
 
 class HrHospitalPatient(models.Model):
@@ -20,3 +20,36 @@ class HrHospitalPatient(models.Model):
         inverse_name='patient_id',
         string='Doctor History',
     )
+    visit_ids = fields.One2many(
+        comodel_name='hr.hospital.visit',
+        inverse_name='patient_id',
+        string='Visits',
+    )
+    visit_count = fields.Integer(
+        string='Visit Count',
+        compute='_compute_visit_count',
+    )
+
+    @api.depends('visit_ids')
+    def _compute_visit_count(self):
+        for patient in self:
+            patient.visit_count = len(patient.visit_ids)
+
+    def action_view_visits(self):
+        self.ensure_one()
+        action = self.env['ir.actions.act_window']._for_xml_id(
+            'hr_hospital.hr_hospital_visit_action',
+        )
+        action.update(
+            name=_('Visits: %s') % self.name,
+            domain=[('patient_id', '=', self.id)],
+            context={'default_patient_id': self.id},
+        )
+        return action
+
+    def action_create_quick_visit(self):
+        self.ensure_one()
+        return self.env['hr.hospital.visit']._get_quick_visit_action({
+            'default_patient_id': self.id,
+            'default_doctor_id': self.doctor_id.id,
+        })
