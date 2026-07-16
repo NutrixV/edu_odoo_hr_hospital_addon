@@ -52,3 +52,27 @@ class TestDoctor(TransactionCase):
         })
         with self.assertRaises(ValidationError):
             mentor.category_id = self.intern_cat
+
+    def test_visit_ids_newest_first(self):
+        doctor = self.Doctor.create({'name': 'Report Doc'})
+        patient = self.env['hr.hospital.patient'].create({'name': 'Report Pat'})
+        old = self.env['hr.hospital.visit'].create({
+            'doctor_id': doctor.id,
+            'patient_id': patient.id,
+            'scheduled_date': '2026-01-10 09:00:00',
+        })
+        new = self.env['hr.hospital.visit'].create({
+            'doctor_id': doctor.id,
+            'patient_id': patient.id,
+            'scheduled_date': '2026-03-10 09:00:00',
+        })
+        doctor.invalidate_recordset(['visit_ids'])
+        self.assertEqual(doctor.visit_ids.ids, [new.id, old.id])
+
+    def test_patient_ids_inverse_of_personal_doctor(self):
+        doctor = self.Doctor.create({'name': 'Personal Doc'})
+        patient = self.env['hr.hospital.patient'].create({
+            'name': 'Linked Pat',
+            'doctor_id': doctor.id,
+        })
+        self.assertEqual(doctor.patient_ids, patient)

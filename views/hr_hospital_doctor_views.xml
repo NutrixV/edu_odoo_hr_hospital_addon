@@ -75,11 +75,38 @@
         <field name="model">hr.hospital.doctor</field>
         <field name="arch" type="xml">
             <kanban default_group_by="category_id" quick_create="1" sample="1">
+                <field name="active" />
                 <templates>
+                    <t t-name="menu">
+                        <a role="menuitem" type="open" class="dropdown-item">Edit</a>
+                        <a
+                            role="menuitem"
+                            type="archive"
+                            class="dropdown-item"
+                            t-if="record.active.raw_value"
+                        >Archive</a>
+                        <a
+                            role="menuitem"
+                            type="unarchive"
+                            class="dropdown-item"
+                            t-if="!record.active.raw_value"
+                        >Unarchive</a>
+                        <a
+                            role="menuitem"
+                            type="delete"
+                            class="dropdown-item"
+                            t-if="widget.deletable"
+                        >Delete</a>
+                    </t>
                     <t t-name="card">
                         <field name="name" class="fw-bold" />
+                        <field name="category_id" />
                         <field name="specialty" />
                         <field name="phone" />
+                        <div t-if="record.intern_ids.raw_value.length" class="mt-1">
+                            <span class="text-muted">Interns:</span>
+                            <field name="intern_ids" widget="many2many_tags" />
+                        </div>
                         <footer>
                             <button
                                 name="action_create_quick_visit"

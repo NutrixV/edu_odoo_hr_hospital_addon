@@ -35,6 +35,16 @@ class HrHospitalDoctor(models.Model):
         inverse_name='mentor_id',
         string='Interns',
     )
+    patient_ids = fields.One2many(
+        comodel_name='hr.hospital.patient',
+        inverse_name='doctor_id',
+        string='Patients',
+    )
+    visit_ids = fields.One2many(
+        comodel_name='hr.hospital.visit',
+        inverse_name='doctor_id',
+        string='Visits',
+    )
 
     @api.depends('category_id')
     def _compute_is_intern(self):
