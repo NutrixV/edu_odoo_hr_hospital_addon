@@ -6,7 +6,7 @@
         <field name="scheduled_date">2026-06-10 09:00:00</field>
         <field name="actual_date">2026-06-10 09:15:00</field>
         <field name="state">done</field>
-        <field name="summary"><![CDATA[<p>Сезонний грип, призначено постільний режим.</p>]]></field>
+        <field name="summary" type="html"><p>Сезонний грип, призначено постільний режим.</p></field>
     </record>
 
     <record id="hr_hospital_visit_demo_2" model="hr.hospital.visit">
@@ -15,7 +15,7 @@
         <field name="scheduled_date">2026-06-15 11:30:00</field>
         <field name="actual_date">2026-06-15 11:40:00</field>
         <field name="state">done</field>
-        <field name="summary"><![CDATA[<p>Плановий огляд у кардіолога.</p>]]></field>
+        <field name="summary" type="html"><p>Плановий огляд у кардіолога.</p></field>
     </record>
 
     <record id="hr_hospital_visit_demo_3" model="hr.hospital.visit">
@@ -53,7 +53,7 @@
         <field name="scheduled_date">2026-02-12 09:30:00</field>
         <field name="actual_date">2026-02-12 09:45:00</field>
         <field name="state">done</field>
-        <field name="summary"><![CDATA[<p>Повторний огляд.</p>]]></field>
+        <field name="summary" type="html"><p>Повторний огляд.</p></field>
     </record>
 
     <record id="hr_hospital_visit_demo_8" model="hr.hospital.visit">
@@ -63,7 +63,7 @@
         <field name="scheduled_date">2026-03-18 14:00:00</field>
         <field name="actual_date">2026-03-18 14:10:00</field>
         <field name="state">done</field>
-        <field name="summary"><![CDATA[<p>Пневмонію підтверджено рентгенографією.</p>]]></field>
+        <field name="summary" type="html"><p>Пневмонію підтверджено рентгенографією.</p></field>
     </record>
 
     <record id="hr_hospital_visit_demo_9" model="hr.hospital.visit">
@@ -81,7 +81,7 @@
         <field name="scheduled_date">2026-05-22 12:30:00</field>
         <field name="actual_date">2026-05-22 12:35:00</field>
         <field name="state">done</field>
-        <field name="summary"><![CDATA[<p>Контроль рівня цукру в крові.</p>]]></field>
+        <field name="summary" type="html"><p>Контроль рівня цукру в крові.</p></field>
     </record>
 
     <record id="hr_hospital_visit_demo_11" model="hr.hospital.visit">

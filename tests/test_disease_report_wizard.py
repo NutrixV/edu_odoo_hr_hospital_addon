@@ -1,5 +1,6 @@
 from datetime import date
 
+from odoo import Command
 from odoo.tests.common import TransactionCase
 
 
@@ -28,7 +29,7 @@ class TestDiseaseReportWizard(TransactionCase):
     def test_domain_filters_period_and_disease(self):
         disease = self.env['hr.hospital.disease'].create({'name': 'Report Disease'})
         wizard = self.wizard_model.create({
-            'disease_ids': [(4, disease.id)],
+            'disease_ids': [Command.link(disease.id)],
             'date_from': date(2026, 7, 1),
             'date_to': date(2026, 7, 31),
         })
@@ -50,7 +51,7 @@ class TestDiseaseReportWizard(TransactionCase):
             for disease in (disease_a, disease_a, disease_b)
         ])
         wizard = self.wizard_model.create({
-            'disease_ids': [(6, 0, (disease_a | disease_b).ids)],
+            'disease_ids': [Command.set((disease_a | disease_b).ids)],
             'date_from': False,
             'date_to': False,
         })
