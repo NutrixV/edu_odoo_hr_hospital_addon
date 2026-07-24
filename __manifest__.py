@@ -13,10 +13,10 @@ Module for hospital automation. Keeps records of:
 * Patient visits
 """,
     "author": "Vitalii Sorokolit",
-    "version": "19.0.2.0.0",
+    "version": "19.0.3.0.0",
     "category": "Customization",
     "license": "OPL-1",
-    "depends": ["base"],
+    "depends": ["base", "web"],
     "external_dependencies": {"python": []},
     "data": [
         "security/ir.model.access.csv",
@@ -30,6 +30,8 @@ Module for hospital automation. Keeps records of:
         "views/hr_hospital_doctor_history_views.xml",
         "wizard/hr_hospital_patient_reassign_doctor_views.xml",
         "wizard/hr_hospital_visit_report_views.xml",
+        "wizard/hr_hospital_disease_report_views.xml",
+        "report/hr_hospital_disease_report_templates.xml",
         "views/hr_hospital_menu.xml",
     ],
     "demo": [

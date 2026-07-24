@@ -28,6 +28,21 @@ class TestDoctor(TransactionCase):
         with self.assertRaises(ValidationError):
             junior.mentor_id = intern
 
+    def test_intern_ids_inverse_of_mentor(self):
+        mentor = self.Doctor.create({'name': 'Mentor X'})
+        intern = self.Doctor.create({
+            'name': 'Intern X',
+            'category_id': self.intern_cat.id,
+            'mentor_id': mentor.id,
+        })
+        self.assertEqual(mentor.intern_ids, intern)
+
+    def test_quick_visit_defaults(self):
+        doctor = self.Doctor.create({'name': 'Quick Doc'})
+        action = doctor.action_create_quick_visit()
+        self.assertEqual(action['target'], 'new')
+        self.assertEqual(action['context']['default_doctor_id'], doctor.id)
+
     def test_mentor_cannot_become_intern(self):
         mentor = self.Doctor.create({'name': 'Mentor'})
         self.Doctor.create({

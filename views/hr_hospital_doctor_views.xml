@@ -19,6 +19,14 @@
         <field name="model">hr.hospital.doctor</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button
+                        name="action_create_quick_visit"
+                        type="object"
+                        string="New Visit"
+                        class="btn-primary"
+                    />
+                </header>
                 <sheet>
                     <group>
                         <group>
@@ -26,11 +34,13 @@
                             <field name="specialty" />
                             <field name="category_id" />
                             <field name="is_intern" />
-                            <field name="mentor_id" invisible="not is_intern" />
                         </group>
                         <group>
                             <field name="phone" widget="phone" />
                             <field name="user_id" />
+                        </group>
+                        <group string="Mentor" invisible="not is_intern">
+                            <field name="mentor_id" />
                         </group>
                         <group string="Medical Info">
                             <field name="birthdate" />
@@ -40,14 +50,83 @@
                             <field name="rh_factor" />
                         </group>
                     </group>
+                    <notebook>
+                        <page string="Interns" name="interns" invisible="is_intern">
+                            <field name="intern_ids" mode="kanban">
+                                <kanban>
+                                    <templates>
+                                        <t t-name="card">
+                                            <field name="name" class="fw-bold" />
+                                            <field name="specialty" />
+                                            <field name="phone" />
+                                        </t>
+                                    </templates>
+                                </kanban>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <record id="hr_hospital_doctor_kanban" model="ir.ui.view">
+        <field name="name">hr.hospital.doctor.kanban</field>
+        <field name="model">hr.hospital.doctor</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="category_id" quick_create="1" sample="1">
+                <templates>
+                    <t t-name="card">
+                        <field name="name" class="fw-bold" />
+                        <field name="specialty" />
+                        <field name="phone" />
+                        <footer>
+                            <button
+                                name="action_create_quick_visit"
+                                type="object"
+                                class="btn btn-primary btn-sm ms-auto"
+                                string="New Visit"
+                            />
+                        </footer>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="hr_hospital_doctor_search" model="ir.ui.view">
+        <field name="name">hr.hospital.doctor.search</field>
+        <field name="model">hr.hospital.doctor</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="specialty" />
+                <field name="category_id" />
+                <filter
+                    name="filter_mentors"
+                    string="Mentors"
+                    domain="[('intern_ids', '!=', False)]"
+                />
+                <filter
+                    name="filter_interns"
+                    string="Interns"
+                    domain="[('is_intern', '=', True)]"
+                />
+                <group>
+                    <filter
+                        name="group_by_category"
+                        string="Category"
+                        context="{'group_by': 'category_id'}"
+                    />
+                </group>
+            </search>
         </field>
     </record>
 
     <record id="hr_hospital_doctor_action" model="ir.actions.act_window">
         <field name="name">Doctors</field>
         <field name="res_model">hr.hospital.doctor</field>
-        <field name="view_mode">list,form</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="search_view_id" ref="hr_hospital_doctor_search" />
     </record>
 </odoo>

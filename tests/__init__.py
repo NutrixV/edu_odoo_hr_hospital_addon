@@ -1,4 +1,5 @@
 from . import test_disease
+from . import test_disease_report_wizard
 from . import test_doctor
 from . import test_doctor_category
 from . import test_doctor_history

@@ -42,6 +42,24 @@
                     <field name="state" widget="statusbar" statusbar_visible="planned,done" />
                 </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            class="oe_stat_button"
+                            name="action_view_same_disease_visits"
+                            type="object"
+                            icon="fa-heartbeat"
+                            invisible="not disease_id"
+                        >
+                            <field name="same_disease_visit_count" widget="statinfo" string="Same Disease" />
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active" />
+                    <field name="active" invisible="1" />
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
                     <group>
                         <group>
                             <field name="patient_id" />
@@ -74,9 +92,66 @@
         </field>
     </record>
 
+    <record id="hr_hospital_visit_search" model="ir.ui.view">
+        <field name="name">hr.hospital.visit.search</field>
+        <field name="model">hr.hospital.visit</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="patient_id" />
+                <field name="doctor_id" />
+                <field name="disease_id" />
+                <filter name="filter_planned" string="Planned" domain="[('state', '=', 'planned')]" />
+                <filter name="filter_done" string="Done" domain="[('state', '=', 'done')]" />
+                <filter name="filter_cancelled" string="Cancelled" domain="[('state', '=', 'cancelled')]" />
+                <separator />
+                <filter
+                    name="filter_current_year"
+                    string="Current Year"
+                    domain="[
+                    ('scheduled_date', '&gt;=', context_today().strftime('%Y-01-01')),
+                    ('scheduled_date', '&lt;', (context_today() + relativedelta(years=1)).strftime('%Y-01-01')),
+                ]"
+                />
+                <group>
+                    <filter name="group_by_state" string="Status" context="{'group_by': 'state'}" />
+                    <filter name="group_by_doctor" string="Doctor" context="{'group_by': 'doctor_id'}" />
+                    <filter name="group_by_month" string="Month" context="{'group_by': 'scheduled_date:month'}" />
+                </group>
+                <searchpanel>
+                    <field name="doctor_id" icon="fa-user-md" enable_counters="1" />
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <record id="hr_hospital_visit_pivot" model="ir.ui.view">
+        <field name="name">hr.hospital.visit.pivot</field>
+        <field name="model">hr.hospital.visit</field>
+        <field name="arch" type="xml">
+            <pivot string="Visit Analysis" sample="1">
+                <field name="doctor_id" type="row" />
+                <field name="scheduled_date" interval="month" type="row" />
+                <field name="state" type="col" />
+            </pivot>
+        </field>
+    </record>
+
+    <record id="hr_hospital_visit_graph" model="ir.ui.view">
+        <field name="name">hr.hospital.visit.graph</field>
+        <field name="model">hr.hospital.visit</field>
+        <field name="arch" type="xml">
+            <graph string="Visits by Month" type="bar" stacked="1" sample="1">
+                <field name="scheduled_date" interval="month" type="row" />
+                <field name="disease_id" type="col" />
+            </graph>
+        </field>
+    </record>
+
     <record id="hr_hospital_visit_action" model="ir.actions.act_window">
         <field name="name">Visits</field>
         <field name="res_model">hr.hospital.visit</field>
-        <field name="view_mode">list,form,calendar</field>
+        <field name="view_mode">list,form,calendar,pivot,graph</field>
+        <field name="search_view_id" ref="hr_hospital_visit_search" />
+        <field name="context">{'search_default_filter_current_year': 1}</field>
     </record>
 </odoo>
