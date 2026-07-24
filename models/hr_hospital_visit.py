@@ -3,6 +3,8 @@ from odoo.exceptions import UserError
 
 
 class HrHospitalVisit(models.Model):
+    """Patient visit to a doctor."""
+
     _name = 'hr.hospital.visit'
     _description = 'Patient Visit'
     _order = 'scheduled_date desc'
@@ -49,11 +51,13 @@ class HrHospitalVisit(models.Model):
 
     @api.depends('disease_id.visit_ids')
     def _compute_same_disease_visit_count(self):
+        """Count visits sharing this visit's disease."""
         for visit in self:
             visit.same_disease_visit_count = len(visit.disease_id.visit_ids)
 
     @api.model
     def _get_quick_visit_action(self, defaults):
+        """Return an action opening a new visit form with defaults."""
         return {
             'type': 'ir.actions.act_window',
             'name': _('New Visit'),
@@ -64,6 +68,7 @@ class HrHospitalVisit(models.Model):
         }
 
     def action_view_same_disease_visits(self):
+        """Open visits having the same disease."""
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
@@ -75,6 +80,7 @@ class HrHospitalVisit(models.Model):
 
     @api.depends('patient_id', 'scheduled_date')
     def _compute_name(self):
+        """Compose the reference from the patient name and scheduled date."""
         for visit in self:
             if visit.patient_id and visit.scheduled_date:
                 visit.name = '%s — %s' % (
@@ -87,10 +93,12 @@ class HrHospitalVisit(models.Model):
                 visit.name = _('New Visit')
 
     def _is_done(self):
+        """Return True when the visit is completed."""
         self.ensure_one()
         return self.state == 'done'
 
     def action_mark_done(self):
+        """Mark planned visits as done, stamping the actual date if empty."""
         if any(visit.state != 'planned' for visit in self):
             raise UserError(_('Only a planned visit can be marked as done.'))
         without_date = self.filtered(lambda visit: not visit.actual_date)
@@ -102,18 +110,21 @@ class HrHospitalVisit(models.Model):
         return True
 
     def action_cancel(self):
+        """Cancel planned visits."""
         if any(visit.state != 'planned' for visit in self):
             raise UserError(_('Only a planned visit can be cancelled.'))
         self.write({'state': 'cancelled'})
         return True
 
     def action_reset_to_planned(self):
+        """Return cancelled visits to the planned state."""
         if any(visit.state != 'cancelled' for visit in self):
             raise UserError(_('Only a cancelled visit can be reset to planned.'))
         self.write({'state': 'planned'})
         return True
 
     def write(self, vals):
+        """Protect completed visits from date, doctor and archiving changes."""
         protected = {'scheduled_date', 'actual_date', 'doctor_id'}
         if protected & set(vals):
             for visit in self:
@@ -126,6 +137,7 @@ class HrHospitalVisit(models.Model):
         return super().write(vals)
 
     def unlink(self):
+        """Forbid deleting completed visits."""
         for visit in self:
             if visit._is_done():
                 raise UserError(_('You cannot delete a completed visit.'))

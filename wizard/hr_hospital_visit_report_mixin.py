@@ -4,6 +4,8 @@ from odoo import api, fields, models
 
 
 class HrHospitalVisitReportMixin(models.AbstractModel):
+    """Shared filters for visit reporting wizards."""
+
     _name = 'hr.hospital.visit.report.mixin'
     _description = 'Visit Report Mixin'
 
@@ -16,6 +18,7 @@ class HrHospitalVisitReportMixin(models.AbstractModel):
 
     @api.model
     def default_get(self, fields_list):
+        """Prefill doctors from the active doctor selection."""
         res = super().default_get(fields_list)
         if (
             'doctor_ids' in fields_list
@@ -27,6 +30,7 @@ class HrHospitalVisitReportMixin(models.AbstractModel):
         return res
 
     def _get_visit_domain(self):
+        """Build the visit search domain from the filled filters."""
         self.ensure_one()
         domain = []
         if self.doctor_ids:

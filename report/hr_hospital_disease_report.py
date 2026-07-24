@@ -2,11 +2,14 @@ from odoo import api, models
 
 
 class ReportDiseaseVisits(models.AbstractModel):
+    """QWeb parser for the disease visits PDF report."""
+
     _name = 'report.hr_hospital.report_disease_visits'
     _description = 'Disease Report PDF'
 
     @api.model
     def _get_report_values(self, docids, data=None):
+        """Group the wizard's visits by disease for rendering."""
         wizards = self.env['hr.hospital.disease.report'].browse(docids)
         reports = []
         for wizard in wizards:

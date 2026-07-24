@@ -2,6 +2,8 @@ from odoo import fields, models
 
 
 class HrHospitalDoctorCategory(models.Model):
+    """Qualification level of a doctor."""
+
     _name = 'hr.hospital.doctor.category'
     _description = 'Doctor Category'
     _order = 'sequence, name'

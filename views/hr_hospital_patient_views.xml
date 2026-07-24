@@ -51,6 +51,7 @@
                             <field name="phone" widget="phone" />
                             <field name="doctor_id" />
                             <field name="insurance_number" />
+                            <field name="user_id" />
                         </group>
                     </group>
                     <notebook>

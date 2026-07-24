@@ -4,6 +4,8 @@ from odoo import api, fields, models
 
 
 class HrHospitalMedicMixin(models.AbstractModel):
+    """Shared medical attributes for person-like models."""
+
     _name = 'hr.hospital.medic.mixin'
     _description = 'Medical Info (mixin)'
 
@@ -28,6 +30,7 @@ class HrHospitalMedicMixin(models.AbstractModel):
 
     @api.depends('birthdate')
     def _compute_age(self):
+        """Compute full years between the birthdate and today."""
         today = fields.Date.context_today(self)
         for record in self:
             if record.birthdate:
