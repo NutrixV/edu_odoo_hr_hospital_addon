@@ -64,5 +64,8 @@ Highlights
     "installable": True,
     "application": False,
     "auto_install": False,
-    "images": ["static/description/banner.png"],
+    "images": [
+        "static/description/anim_flow_pro.gif",
+        "static/description/banner.png",
+    ],
 }
