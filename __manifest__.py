@@ -35,6 +35,11 @@ Module for hospital automation. Keeps records of:
         "report/hr_hospital_doctor_report_templates.xml",
         "views/hr_hospital_menu.xml",
     ],
+    "assets": {
+        "web.report_assets_common": [
+            "hr_hospital/static/src/scss/report_doctor.scss",
+        ],
+    },
     "demo": [
         "demo/hr_hospital_disease_demo.xml",
         "demo/hr_hospital_doctor_demo.xml",

@@ -58,7 +58,7 @@ class TestDoctorReport(TransactionCase):
 
     def test_cancelled_state_colored(self):
         html = self._render(self.doctor_1)
-        self.assertIn('#f8d7da', html)
+        self.assertIn('o_hr_hospital_visit_state_cancelled', html)
 
     def test_multiple_doctors_one_article_each(self):
         html = self._render(self.doctor_1 | self.doctor_2)

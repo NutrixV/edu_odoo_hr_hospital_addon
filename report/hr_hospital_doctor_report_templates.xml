@@ -20,7 +20,7 @@
                         <img
                             t-if="company.logo"
                             t-att-src="image_data_uri(company.logo)"
-                            style="max-height: 45px;"
+                            class="o_hr_hospital_report_logo"
                             alt="Logo"
                         />
                         <div class="text-end">
@@ -60,7 +60,7 @@
                                     <td><span t-field="visit.scheduled_date" /></td>
                                     <td><span t-field="visit.patient_id" /></td>
                                     <td><span t-field="visit.disease_id" /></td>
-                                    <td t-att-style="'background-color: %s;' % {'planned': '#fff3cd', 'done': '#d1e7dd', 'cancelled': '#f8d7da'}[visit.state]">
+                                    <td t-attf-class="o_hr_hospital_visit_state_{{visit.state}}">
                                         <span t-field="visit.state" />
                                     </td>
                                 </tr>

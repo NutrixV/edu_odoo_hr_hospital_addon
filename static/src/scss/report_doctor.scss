@@ -1,0 +1,18 @@
+.o_hr_hospital_report_logo {
+    max-height: 45px;
+}
+
+.table td.o_hr_hospital_visit_state_planned {
+    --bs-table-bg-state: #{$warning-bg-subtle};
+    background-color: $warning-bg-subtle;
+}
+
+.table td.o_hr_hospital_visit_state_done {
+    --bs-table-bg-state: #{$success-bg-subtle};
+    background-color: $success-bg-subtle;
+}
+
+.table td.o_hr_hospital_visit_state_cancelled {
+    --bs-table-bg-state: #{$danger-bg-subtle};
+    background-color: $danger-bg-subtle;
+}
