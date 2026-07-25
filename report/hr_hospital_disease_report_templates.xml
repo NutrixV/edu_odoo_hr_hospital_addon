@@ -3,8 +3,8 @@
         <field name="name">Disease Report (PDF)</field>
         <field name="model">hr.hospital.disease.report</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">hr_hospital.report_disease_visits</field>
-        <field name="report_file">hr_hospital.report_disease_visits</field>
+        <field name="report_name">hr_hospital_management.report_disease_visits</field>
+        <field name="report_file">hr_hospital_management.report_disease_visits</field>
         <field name="print_report_name">'Disease Report'</field>
     </record>
 

@@ -52,7 +52,7 @@ class HrHospitalDoctor(models.Model):
     def _compute_is_intern(self):
         """Flag doctors whose category is the intern category."""
         intern = self.env.ref(
-            'hr_hospital.hr_hospital_category_intern',
+            'hr_hospital_management.hr_hospital_category_intern',
             raise_if_not_found=False,
         )
         for doctor in self:

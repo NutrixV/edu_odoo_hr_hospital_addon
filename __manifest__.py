@@ -24,9 +24,12 @@ Highlights
 * Full Ukrainian translation
 """,
     "author": "Vitalii Sorokolit",
-    "version": "19.0.5.0.0",
-    "category": "Customization",
-    "license": "OPL-1",
+    "maintainer": "Vitalii Sorokolit",
+    "website": "https://github.com/NutrixV/edu_odoo_hr_hospital_addon",
+    "support": "ajjaax@gmail.com",
+    "version": "19.0.5.1.0",
+    "category": "Human Resources",
+    "license": "LGPL-3",
     "depends": ["base", "web"],
     "external_dependencies": {"python": []},
     "data": [
@@ -50,7 +53,7 @@ Highlights
     ],
     "assets": {
         "web.report_assets_common": [
-            "hr_hospital/static/src/scss/report_doctor.scss",
+            "hr_hospital_management/static/src/scss/report_doctor.scss",
         ],
     },
     "demo": [
@@ -62,10 +65,12 @@ Highlights
         "demo/hr_hospital_users_demo.xml",
     ],
     "installable": True,
-    "application": False,
+    "application": True,
     "auto_install": False,
     "images": [
-        "static/description/anim_flow_pro.gif",
         "static/description/banner.png",
+        "static/description/anim_flow_pro.gif",
+        "static/description/screenshot_doctor_kanban.png",
+        "static/description/screenshot_doctor_report.png",
     ],
 }

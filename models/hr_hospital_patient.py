@@ -46,7 +46,7 @@ class HrHospitalPatient(models.Model):
         """Open the visit list filtered by the patient."""
         self.ensure_one()
         action = self.env['ir.actions.act_window']._for_xml_id(
-            'hr_hospital.hr_hospital_visit_action',
+            'hr_hospital_management.hr_hospital_visit_action',
         )
         action.update(
             name=_('Visits: %s') % self.name,

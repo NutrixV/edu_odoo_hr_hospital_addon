@@ -46,5 +46,5 @@ class HrHospitalDiseaseReport(models.TransientModel):
         """Render the disease report as PDF."""
         self.ensure_one()
         return self.env.ref(
-            'hr_hospital.hr_hospital_disease_report_pdf',
+            'hr_hospital_management.hr_hospital_disease_report_pdf',
         ).report_action(self)

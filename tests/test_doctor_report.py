@@ -34,7 +34,7 @@ class TestDoctorReport(TransactionCase):
     def _render(self, doctors):
         self.env.invalidate_all()
         html, _report_type = self.report._render_qweb_html(
-            'hr_hospital.hr_hospital_doctor_report_pdf',
+            'hr_hospital_management.hr_hospital_doctor_report_pdf',
             doctors.ids,
         )
         return html.decode()

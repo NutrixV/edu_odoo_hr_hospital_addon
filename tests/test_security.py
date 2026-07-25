@@ -18,19 +18,19 @@ class TestSecurity(TransactionCase):
                 'group_ids': [Command.set([cls.env.ref(group_xmlid).id])],
             })
 
-        cls.user_patient = make_user('Sec Patient User', 'sec_patient', 'hr_hospital.group_hospital_patient')
-        cls.user_intern = make_user('Sec Intern User', 'sec_intern', 'hr_hospital.group_hospital_intern')
-        cls.user_doctor = make_user('Sec Doctor User', 'sec_doctor', 'hr_hospital.group_hospital_doctor')
-        cls.user_other = make_user('Sec Other Doctor User', 'sec_other', 'hr_hospital.group_hospital_doctor')
-        cls.user_manager = make_user('Sec Manager User', 'sec_manager', 'hr_hospital.group_hospital_manager')
-        cls.user_admin = make_user('Sec Admin User', 'sec_admin', 'hr_hospital.group_hospital_admin')
+        cls.user_patient = make_user('Sec Patient User', 'sec_patient', 'hr_hospital_management.group_hospital_patient')
+        cls.user_intern = make_user('Sec Intern User', 'sec_intern', 'hr_hospital_management.group_hospital_intern')
+        cls.user_doctor = make_user('Sec Doctor User', 'sec_doctor', 'hr_hospital_management.group_hospital_doctor')
+        cls.user_other = make_user('Sec Other Doctor User', 'sec_other', 'hr_hospital_management.group_hospital_doctor')
+        cls.user_manager = make_user('Sec Manager User', 'sec_manager', 'hr_hospital_management.group_hospital_manager')
+        cls.user_admin = make_user('Sec Admin User', 'sec_admin', 'hr_hospital_management.group_hospital_admin')
 
         Doctor = cls.env['hr.hospital.doctor']
         cls.doctor = Doctor.create({'name': 'Sec Doctor', 'user_id': cls.user_doctor.id})
         cls.intern = Doctor.create({
             'name': 'Sec Intern',
             'user_id': cls.user_intern.id,
-            'category_id': cls.env.ref('hr_hospital.hr_hospital_category_intern').id,
+            'category_id': cls.env.ref('hr_hospital_management.hr_hospital_category_intern').id,
             'mentor_id': cls.doctor.id,
         })
         cls.other_doctor = Doctor.create({'name': 'Sec Other Doctor', 'user_id': cls.user_other.id})

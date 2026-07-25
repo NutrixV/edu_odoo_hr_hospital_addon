@@ -4,7 +4,7 @@ from odoo import api, models
 class ReportDiseaseVisits(models.AbstractModel):
     """QWeb parser for the disease visits PDF report."""
 
-    _name = 'report.hr_hospital.report_disease_visits'
+    _name = 'report.hr_hospital_management.report_disease_visits'
     _description = 'Disease Report PDF'
 
     @api.model

@@ -21,7 +21,7 @@ Installation
 
 Add the repository to ``addons_path`` and install the module::
 
-    python odoo-bin -c odoo.conf -d <db> -i hr_hospital
+    python odoo-bin -c odoo.conf -d <db> -i hr_hospital_management
 
 Configuration
 -------------
@@ -42,14 +42,19 @@ Tests
 
 Run the module test suite::
 
-    python odoo-bin -c odoo.conf -d <db> -u hr_hospital --test-enable --stop-after-init
+    python odoo-bin -c odoo.conf -d <db> -u hr_hospital_management --test-enable --stop-after-init
 
 Changelog
 ---------
 
 See ``changelog.rst``.
 
+License
+-------
+
+LGPL-3 — see the ``LICENSE`` file.
+
 Author
 ------
 
-* Vitalii Sorokolit
+* Vitalii Sorokolit (support: ajjaax@gmail.com)

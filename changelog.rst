@@ -1,6 +1,20 @@
 Changelog
 =========
 
+19.0.5.1.0 (2026-07)
+--------------------
+
+* Technical name changed from ``hr_hospital`` to ``hr_hospital_management``
+  (``hr_hospital`` is reserved on the Odoo Apps Store by another account).
+  Model names, database tables and the display name are unchanged.
+* Relicensed from OPL-1 to LGPL-3.
+* Odoo Apps packaging: ``website``, ``support`` and ``maintainer`` keys,
+  ``Human Resources`` category, flagged as an application, banner as the
+  primary store image.
+* Report styles moved from inline attributes to a ``web.report_assets_common``
+  asset bundle.
+* New module icon and matching store banner.
+
 19.0.5.0.0 (2026-07)
 --------------------
 
