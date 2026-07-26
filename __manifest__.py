@@ -1,6 +1,6 @@
 {
     "name": "HR Hospital",
-    "summary": "Manage doctors, interns, patients, diseases and visits — with role-based access and PDF reports",
+    "summary": "Manage doctors, interns, patients, diseases and visits with role-based access and PDF reports",
     "description": """
 HR Hospital
 ===========
@@ -26,10 +26,12 @@ Highlights
     "author": "Vitalii Sorokolit",
     "maintainer": "Vitalii Sorokolit",
     "website": "https://github.com/NutrixV/edu_odoo_hr_hospital_addon",
-    "support": "ajjaax@gmail.com",
-    "version": "19.0.5.1.0",
+    "support": "support@example.com",
+    "version": "19.0.5.2.0",
     "category": "Human Resources",
     "license": "LGPL-3",
+    "price": 0.0,
+    "currency": "EUR",
     "depends": ["base", "web"],
     "external_dependencies": {"python": []},
     "data": [

@@ -57,4 +57,4 @@ LGPL-3 — see the ``LICENSE`` file.
 Author
 ------
 
-* Vitalii Sorokolit (support: ajjaax@gmail.com)
+* Vitalii Sorokolit (support: support@example.com)

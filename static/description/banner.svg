@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6d4562"/>
+      <stop offset="55%" stop-color="#8b6480"/>
+      <stop offset="100%" stop-color="#9a7590"/>
+    </linearGradient>
+    <clipPath id="heartClip">
+      <path d="M110 208 C 44 156 8 116 8 74 A 52 52 0 0 1 110 46 A 52 52 0 0 1 212 74 C 212 116 176 156 110 208 Z"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1200" height="600" fill="url(#bg)"/>
+
+  <polyline points="0,532 1010,532 1040,532 1060,494 1082,570 1104,532 1200,532"
+            fill="none" stroke="#ffffff" stroke-opacity="0.18" stroke-width="7"
+            stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g transform="translate(96,150)">
+    <path d="M110 208 C 44 156 8 116 8 74 A 52 52 0 0 1 110 46 A 52 52 0 0 1 212 74 C 212 116 176 156 110 208 Z"
+          fill="#ffffff"/>
+    <g clip-path="url(#heartClip)">
+      <polyline points="-10,112 52,112 74,112 92,66 116,158 140,112 230,112"
+                fill="none" stroke="#7a5270" stroke-width="18"
+                stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <text x="372" y="248" font-family="Source Sans Pro" font-size="104"
+        font-weight="700" fill="#ffffff" letter-spacing="-1">HR Hospital</text>
+  <text x="376" y="308" font-family="Source Sans Pro" font-size="38"
+        font-weight="400" fill="#ffffff" fill-opacity="0.92">Doctors &#183; Patients &#183; Visits &#183; Diseases</text>
+
+  <g font-family="Source Sans Pro" font-size="30" font-weight="600" fill="#ffffff">
+    <rect x="96" y="404" width="308" height="66" rx="33" fill="#ffffff" fill-opacity="0.16"/>
+    <text x="250" y="446" text-anchor="middle">Role-based access</text>
+
+    <rect x="428" y="404" width="272" height="66" rx="33" fill="#ffffff" fill-opacity="0.16"/>
+    <text x="564" y="446" text-anchor="middle">PDF reports</text>
+
+    <rect x="724" y="404" width="300" height="66" rx="33" fill="#ffffff" fill-opacity="0.16"/>
+    <text x="874" y="446" text-anchor="middle">Doctor mentorship</text>
+  </g>
+
+  <rect x="864" y="72" width="240" height="60" rx="30" fill="#ffffff" fill-opacity="0.16"/>
+  <text x="984" y="112" text-anchor="middle" font-family="Source Sans Pro"
+        font-size="28" font-weight="600" fill="#ffffff" fill-opacity="0.95">Built for Odoo 19</text>
+</svg>

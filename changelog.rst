@@ -1,6 +1,20 @@
 Changelog
 =========
 
+19.0.5.2.0 (2026-07)
+--------------------
+
+* Store banner redrawn at a 2:1 ratio (1200x600) so the Odoo Apps cover no
+  longer crops its sides; SVG source kept next to the PNG.
+* Module description rewritten with HTML entities instead of raw non-ASCII
+  characters, which the Apps Store rendered as mojibake.
+* Description styling fixed for the Apps Store sanitizer: ``background-color``
+  instead of the ``background`` shorthand, no ``box-shadow``, Font Awesome
+  icons instead of emoji.
+* Description split into Bootstrap tabs (Overview, Doctors & patients, Visits,
+  Security, Reports, Setup, Technical, Support).
+* ``price`` and ``currency`` keys added to the manifest (free module).
+
 19.0.5.1.0 (2026-07)
 --------------------
 
