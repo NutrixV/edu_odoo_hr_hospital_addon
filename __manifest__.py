@@ -13,7 +13,7 @@ Module for hospital automation. Keeps records of:
 * Patient visits
 """,
     "author": "Vitalii Sorokolit",
-    "version": "19.0.3.0.0",
+    "version": "19.0.4.0.0",
     "category": "Customization",
     "license": "OPL-1",
     "depends": ["base", "web"],
@@ -32,8 +32,14 @@ Module for hospital automation. Keeps records of:
         "wizard/hr_hospital_visit_report_views.xml",
         "wizard/hr_hospital_disease_report_views.xml",
         "report/hr_hospital_disease_report_templates.xml",
+        "report/hr_hospital_doctor_report_templates.xml",
         "views/hr_hospital_menu.xml",
     ],
+    "assets": {
+        "web.report_assets_common": [
+            "hr_hospital/static/src/scss/report_doctor.scss",
+        ],
+    },
     "demo": [
         "demo/hr_hospital_disease_demo.xml",
         "demo/hr_hospital_doctor_demo.xml",
