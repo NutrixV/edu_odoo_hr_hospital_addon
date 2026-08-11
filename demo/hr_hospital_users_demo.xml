@@ -1,0 +1,48 @@
+<odoo>
+    <record id="hr_hospital_user_patient_demo" model="res.users">
+        <field name="name">Demo Hospital Patient</field>
+        <field name="login">demo_hospital_patient</field>
+        <field name="password">demo_hospital_patient</field>
+        <field name="group_ids" eval="[Command.set([ref('group_hospital_patient')])]"/>
+    </record>
+
+    <record id="hr_hospital_user_intern_demo" model="res.users">
+        <field name="name">Demo Hospital Intern</field>
+        <field name="login">demo_hospital_intern</field>
+        <field name="password">demo_hospital_intern</field>
+        <field name="group_ids" eval="[Command.set([ref('group_hospital_intern')])]"/>
+    </record>
+
+    <record id="hr_hospital_user_doctor_demo" model="res.users">
+        <field name="name">Demo Hospital Doctor</field>
+        <field name="login">demo_hospital_doctor</field>
+        <field name="password">demo_hospital_doctor</field>
+        <field name="group_ids" eval="[Command.set([ref('group_hospital_doctor')])]"/>
+    </record>
+
+    <record id="hr_hospital_user_manager_demo" model="res.users">
+        <field name="name">Demo Hospital Manager</field>
+        <field name="login">demo_hospital_manager</field>
+        <field name="password">demo_hospital_manager</field>
+        <field name="group_ids" eval="[Command.set([ref('group_hospital_manager')])]"/>
+    </record>
+
+    <record id="hr_hospital_user_admin_demo" model="res.users">
+        <field name="name">Demo Hospital Administrator</field>
+        <field name="login">demo_hospital_admin</field>
+        <field name="password">demo_hospital_admin</field>
+        <field name="group_ids" eval="[Command.set([ref('group_hospital_admin')])]"/>
+    </record>
+
+    <record id="hr_hospital_patient_demo_1" model="hr.hospital.patient">
+        <field name="user_id" ref="hr_hospital_user_patient_demo"/>
+    </record>
+
+    <record id="hr_hospital_doctor_demo_1" model="hr.hospital.doctor">
+        <field name="user_id" ref="hr_hospital_user_doctor_demo"/>
+    </record>
+
+    <record id="hr_hospital_doctor_demo_5" model="hr.hospital.doctor">
+        <field name="user_id" ref="hr_hospital_user_intern_demo"/>
+    </record>
+</odoo>

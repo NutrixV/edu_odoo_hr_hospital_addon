@@ -1,25 +1,43 @@
 {
     "name": "HR Hospital",
-    "summary": "Hospital management: doctors, patients, diseases and visits",
+    "summary": "Manage doctors, interns, patients, diseases and visits with role-based access and PDF reports",
     "description": """
 HR Hospital
 ===========
 
-Module for hospital automation. Keeps records of:
+Run your clinic's daily workflow inside Odoo 19.
 
-* Doctors (with a supervising doctor)
-* Patients
-* Disease types
-* Patient visits
+HR Hospital keeps doctor and patient records, tracks mentorship between doctors
+and interns, schedules and closes visits, and classifies diseases. Access to
+sensitive visit data is governed by a clear, hierarchical permission model, and
+the module ships with print-ready PDF reports.
+
+Highlights
+----------
+
+* Doctors with qualification categories, mentors and intern lists
+* Patients with personal doctor history and quick visit creation
+* Visit workflow (planned / done / cancelled) with completed-visit protection
+* Hierarchical, translatable disease classifier
+* Per-doctor PDF report and a disease report wizard
+* Five inherited security roles: Patient, Intern, Doctor, Manager, Administrator
+* Full Ukrainian translation
 """,
     "author": "Vitalii Sorokolit",
-    "version": "19.0.4.0.0",
-    "category": "Customization",
-    "license": "OPL-1",
+    "maintainer": "Vitalii Sorokolit",
+    "website": "https://github.com/NutrixV/edu_odoo_hr_hospital_addon",
+    "support": "support@example.com",
+    "version": "19.0.5.2.0",
+    "category": "Human Resources",
+    "license": "LGPL-3",
+    "price": 0.0,
+    "currency": "EUR",
     "depends": ["base", "web"],
     "external_dependencies": {"python": []},
     "data": [
+        "security/hr_hospital_groups.xml",
         "security/ir.model.access.csv",
+        "security/hr_hospital_security.xml",
         "data/hr_hospital_disease_data.xml",
         "data/hr_hospital_doctor_category_data.xml",
         "views/hr_hospital_doctor_category_views.xml",
@@ -37,7 +55,7 @@ Module for hospital automation. Keeps records of:
     ],
     "assets": {
         "web.report_assets_common": [
-            "hr_hospital/static/src/scss/report_doctor.scss",
+            "hr_hospital_management/static/src/scss/report_doctor.scss",
         ],
     },
     "demo": [
@@ -46,9 +64,15 @@ Module for hospital automation. Keeps records of:
         "demo/hr_hospital_patient_demo.xml",
         "demo/hr_hospital_doctor_history_demo.xml",
         "demo/hr_hospital_visit_demo.xml",
+        "demo/hr_hospital_users_demo.xml",
     ],
     "installable": True,
-    "application": False,
+    "application": True,
     "auto_install": False,
-    "images": [],
+    "images": [
+        "static/description/banner.png",
+        "static/description/anim_flow_pro.gif",
+        "static/description/screenshot_doctor_kanban.png",
+        "static/description/screenshot_doctor_report.png",
+    ],
 }

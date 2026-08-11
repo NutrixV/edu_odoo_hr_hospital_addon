@@ -29,7 +29,7 @@ jobs:
       - name: Checkout module
         uses: actions/checkout@v4
         with:
-          path: custom_addons/hr_hospital
+          path: custom_addons/hr_hospital_management
 
       - name: Clone Odoo 19
         run: git clone --branch 19.0 --depth 1 https://github.com/odoo/odoo.git odoo
@@ -54,9 +54,9 @@ jobs:
           python odoo/odoo-bin \
             --db_host=127.0.0.1 --db_user=odoo --db_password=odoo \
             --addons-path=odoo/addons,custom_addons \
-            -d test_hr_hospital -i hr_hospital --with-demo \
-            --test-enable --test-tags /hr_hospital \
+            -d test_hr_hospital_management -i hr_hospital_management --with-demo \
+            --test-enable --test-tags /hr_hospital_management \
             --stop-after-init --log-level=warn \
             --log-handler odoo.tests:INFO \
-            --log-handler odoo.addons.hr_hospital.tests:INFO \
+            --log-handler odoo.addons.hr_hospital_management.tests:INFO \
             --log-handler odoo.modules.loading:INFO

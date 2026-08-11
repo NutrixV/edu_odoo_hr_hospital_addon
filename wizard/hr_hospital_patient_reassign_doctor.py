@@ -2,6 +2,8 @@ from odoo import fields, models
 
 
 class HrHospitalPatientReassignDoctor(models.TransientModel):
+    """Wizard reassigning the personal doctor for selected patients."""
+
     _name = 'hr.hospital.patient.reassign.doctor'
     _description = 'Mass Reassign Personal Doctor'
 
@@ -13,6 +15,7 @@ class HrHospitalPatientReassignDoctor(models.TransientModel):
     change_date = fields.Date(default=fields.Date.context_today)
 
     def action_apply(self):
+        """Close open history lines and assign the new doctor."""
         self.ensure_one()
         history_model = self.env['hr.hospital.doctor.history']
         patients = self.env['hr.hospital.patient'].browse(

@@ -5,7 +5,7 @@ from odoo.tests.common import TransactionCase
 class TestDoctor(TransactionCase):
     def setUp(self):
         super().setUp()
-        self.intern_cat = self.env.ref('hr_hospital.hr_hospital_category_intern')
+        self.intern_cat = self.env.ref('hr_hospital_management.hr_hospital_category_intern')
         self.Doctor = self.env['hr.hospital.doctor']
 
     def test_is_intern_computed(self):

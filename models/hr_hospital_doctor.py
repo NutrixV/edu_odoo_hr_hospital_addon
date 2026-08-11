@@ -3,6 +3,8 @@ from odoo.exceptions import ValidationError
 
 
 class HrHospitalDoctor(models.Model):
+    """Doctor or intern practicing in the hospital."""
+
     _name = 'hr.hospital.doctor'
     _inherit = ['hr.hospital.medic.mixin']
     _description = 'Doctor'
@@ -48,8 +50,9 @@ class HrHospitalDoctor(models.Model):
 
     @api.depends('category_id')
     def _compute_is_intern(self):
+        """Flag doctors whose category is the intern category."""
         intern = self.env.ref(
-            'hr_hospital.hr_hospital_category_intern',
+            'hr_hospital_management.hr_hospital_category_intern',
             raise_if_not_found=False,
         )
         for doctor in self:
@@ -57,6 +60,7 @@ class HrHospitalDoctor(models.Model):
 
     @api.constrains('mentor_id', 'category_id')
     def _check_mentor_id(self):
+        """Validate mentor assignments between doctors and interns."""
         for doctor in self:
             if doctor.mentor_id and doctor.mentor_id.is_intern:
                 raise ValidationError(_('An intern cannot be selected as a mentor.'))
@@ -66,6 +70,7 @@ class HrHospitalDoctor(models.Model):
             raise ValidationError(_('A doctor cannot be their own supervisor (recursive chain).'))
 
     def action_create_quick_visit(self):
+        """Open a prefilled quick-visit form for the doctor."""
         self.ensure_one()
         return self.env['hr.hospital.visit']._get_quick_visit_action({
             'default_doctor_id': self.id,

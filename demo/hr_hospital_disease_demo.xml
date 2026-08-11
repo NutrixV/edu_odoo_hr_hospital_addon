@@ -1,29 +1,29 @@
 <odoo>
     <record id="hr_hospital_disease_demo_respiratory" model="hr.hospital.disease">
-        <field name="name">Респіраторні захворювання</field>
-        <field name="description">Захворювання дихальної системи.</field>
+        <field name="name">Respiratory diseases</field>
+        <field name="description">Diseases of the respiratory system.</field>
     </record>
 
     <record id="hr_hospital_disease_demo_pneumonia" model="hr.hospital.disease">
-        <field name="name">Пневмонія</field>
+        <field name="name">Pneumonia</field>
         <field name="parent_id" ref="hr_hospital_disease_demo_respiratory" />
-        <field name="description">Запалення легень.</field>
+        <field name="description">Lung inflammation.</field>
     </record>
 
     <record id="hr_hospital_disease_demo_bronchitis" model="hr.hospital.disease">
-        <field name="name">Бронхіт</field>
+        <field name="name">Bronchitis</field>
         <field name="parent_id" ref="hr_hospital_disease_demo_respiratory" />
-        <field name="description">Запалення бронхів.</field>
+        <field name="description">Inflammation of the bronchi.</field>
     </record>
 
     <record id="hr_hospital_disease_demo_endocrine" model="hr.hospital.disease">
-        <field name="name">Ендокринні захворювання</field>
-        <field name="description">Захворювання ендокринної системи.</field>
+        <field name="name">Endocrine diseases</field>
+        <field name="description">Diseases of the endocrine system.</field>
     </record>
 
     <record id="hr_hospital_disease_demo_thyroiditis" model="hr.hospital.disease">
-        <field name="name">Тиреоїдит</field>
+        <field name="name">Thyroiditis</field>
         <field name="parent_id" ref="hr_hospital_disease_demo_endocrine" />
-        <field name="description">Запалення щитоподібної залози.</field>
+        <field name="description">Inflammation of the thyroid gland.</field>
     </record>
 </odoo>

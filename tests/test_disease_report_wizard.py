@@ -56,7 +56,7 @@ class TestDiseaseReportWizard(TransactionCase):
             'date_to': False,
         })
         values = self.env[
-            'report.hr_hospital.report_disease_visits'
+            'report.hr_hospital_management.report_disease_visits'
         ]._get_report_values(wizard.ids)
         self.assertEqual(values['docs'], wizard)
         groups = values['reports'][0]['disease_groups']

@@ -2,6 +2,8 @@ from odoo import _, api, fields, models
 
 
 class HrHospitalPatient(models.Model):
+    """Patient treated in the hospital."""
+
     _name = 'hr.hospital.patient'
     _inherit = ['hr.hospital.medic.mixin']
     _description = 'Patient'
@@ -13,6 +15,10 @@ class HrHospitalPatient(models.Model):
     doctor_id = fields.Many2one(
         comodel_name='hr.hospital.doctor',
         string='Personal Doctor',
+    )
+    user_id = fields.Many2one(
+        comodel_name='res.users',
+        string='System User',
     )
     insurance_number = fields.Char(string='Insurance Policy No.', size=20)
     history_ids = fields.One2many(
@@ -32,13 +38,15 @@ class HrHospitalPatient(models.Model):
 
     @api.depends('visit_ids')
     def _compute_visit_count(self):
+        """Count the patient's visits."""
         for patient in self:
             patient.visit_count = len(patient.visit_ids)
 
     def action_view_visits(self):
+        """Open the visit list filtered by the patient."""
         self.ensure_one()
         action = self.env['ir.actions.act_window']._for_xml_id(
-            'hr_hospital.hr_hospital_visit_action',
+            'hr_hospital_management.hr_hospital_visit_action',
         )
         action.update(
             name=_('Visits: %s') % self.name,
@@ -48,6 +56,7 @@ class HrHospitalPatient(models.Model):
         return action
 
     def action_create_quick_visit(self):
+        """Open a prefilled quick-visit form for the patient."""
         self.ensure_one()
         return self.env['hr.hospital.visit']._get_quick_visit_action({
             'default_patient_id': self.id,

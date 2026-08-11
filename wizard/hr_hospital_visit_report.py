@@ -2,6 +2,8 @@ from odoo import _, api, fields, models
 
 
 class HrHospitalVisitReport(models.TransientModel):
+    """Wizard listing visits filtered by doctor, patient and disease."""
+
     _name = 'hr.hospital.visit.report'
     _inherit = ['hr.hospital.visit.report.mixin']
     _description = 'Visit Report'
@@ -18,6 +20,7 @@ class HrHospitalVisitReport(models.TransientModel):
 
     @api.model
     def default_get(self, fields_list):
+        """Prefill patients from the active patient selection."""
         res = super().default_get(fields_list)
         if (
             'patient_ids' in fields_list
@@ -29,6 +32,7 @@ class HrHospitalVisitReport(models.TransientModel):
         return res
 
     def _get_visit_domain(self):
+        """Extend the domain with patient, disease and state filters."""
         domain = super()._get_visit_domain()
         if self.patient_ids:
             domain.append(('patient_id', 'in', self.patient_ids.ids))
@@ -39,6 +43,7 @@ class HrHospitalVisitReport(models.TransientModel):
         return domain
 
     def action_show_visits(self):
+        """Open the filtered visit list."""
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',

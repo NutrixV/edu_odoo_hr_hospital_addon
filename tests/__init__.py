@@ -6,5 +6,6 @@ from . import test_doctor_history
 from . import test_doctor_report
 from . import test_mass_reassign_wizard
 from . import test_patient
+from . import test_security
 from . import test_visit
 from . import test_visit_report_wizard
